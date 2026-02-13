@@ -5,6 +5,10 @@ import connectDB from "./entity/db.js";
 const app = express();
 const port = 3000;
 
+
+//JSON Middleware
+app.use(express.json());
+
 //Connect DB
 connectDB();
 

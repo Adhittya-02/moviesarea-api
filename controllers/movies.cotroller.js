@@ -3,7 +3,8 @@ export const MovieList = (req, res) => {
 };
 
 export const MovieCreate = (req, res) => {
-    res.send("Create a movie")
+    console.log(req.body);
+    return res.json(req.body)
 }
 
 export const MovieUpdate = (req, res) => {
