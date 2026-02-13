@@ -5,7 +5,7 @@
   "main": "main.js",
   "type": "module",
   "scripts": {
-    "server" : "nodemon main.js",
+    "server": "nodemon main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,7 +20,9 @@
   },
   "homepage": "https://github.com/Adhittya-02/moviesarea-api#readme",
   "dependencies": {
+    "dotenv": "^17.3.1",
     "express": "^5.2.1",
+    "mongoose": "^9.2.1",
     "nodemon": "^3.1.11"
   }
 }
