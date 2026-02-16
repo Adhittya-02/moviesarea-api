@@ -40,7 +40,7 @@ export const MovieDetail = async (req, res) => {
 export const MovieUpdate = async (req, res) => {
     try 
     {
-        const updatedMovie = await Movie.findOneAndUpdate(
+        const updatedMovie = await Movie.findByIdAndUpdate(
         { 
             _id: req.params.id 
         },
@@ -49,7 +49,7 @@ export const MovieUpdate = async (req, res) => {
             description : req.body.description
         }, 
         {
-            new : true
+            returnDocument: 'after'
         })
         res.status(200).json(updatedMovie);
     }
@@ -59,6 +59,20 @@ export const MovieUpdate = async (req, res) => {
     }
 }
 
-export const MovieDelete = (req, res) => {
-    res.send("Delete a movie")
+export const MovieDelete = async (req, res) => {
+    try 
+    {
+        const deletedMovie = await Movie.findByIdAndDelete(req.params.id);
+        if (!deletedMovie) {
+        return res.status(404).json({ message: "Movie not found" });
+        }
+        res.status(200).json({
+        message: "Movie deleted successfully",
+        deletedMovie
+        });
+    } 
+    catch (error) 
+    {
+        res.status(400).json({ message: error.message });
+    }
 }
